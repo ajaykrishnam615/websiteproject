@@ -3,6 +3,25 @@ const statusText = document.getElementById("status");
 
 const API = "https://websiteproject-jcbr.onrender.com/api/contact";
 
+// MOBILE MENU
+const menuBtn = document.getElementById("menuBtn");
+const mobileMenu = document.getElementById("mobileMenu");
+
+menuBtn.addEventListener("click", () => {
+  if (mobileMenu.style.display === "flex") {
+    mobileMenu.style.display = "none";
+  } else {
+    mobileMenu.style.display = "flex";
+  }
+});
+
+mobileMenu.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", () => {
+    mobileMenu.style.display = "none";
+  });
+});
+
+// CONTACT FORM
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
@@ -22,12 +41,12 @@ form.addEventListener("submit", async (e) => {
     const data = await res.json();
 
     if (res.ok) {
-      statusText.innerText = "Message sent!";
+      statusText.innerText = "✅ Message sent successfully!";
       form.reset();
     } else {
-      statusText.innerText = data.error || "Error";
+      statusText.innerText = data.error || "❌ Something went wrong.";
     }
   } catch {
-    statusText.innerText = "Server not reachable";
+    statusText.innerText = "⚠️ Server not reachable";
   }
 });
