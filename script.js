@@ -1,4 +1,4 @@
-const API = "http://localhost:5000/api/contact";
+const API = "https://websiteproject-jcbr.onrender.com/api/contact";
 const form = document.getElementById("contactForm");
 const statusText = document.getElementById("status");
 
